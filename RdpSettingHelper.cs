@@ -23,7 +23,7 @@ namespace NullOps.RdpSigner
 		/// <summary>
 		/// A string containing all valid setting values
 		/// </summary>
-		public static readonly string ValidSettingTypes = string.Concat(StringSettingType + IntSettingType + BinarySettingType);
+		public static readonly string ValidSettingTypes = string.Concat(StringSettingType, IntSettingType, BinarySettingType);
 
 		/// <summary>
 		/// A collection of all setting names (keys) that should be signed, and their associated scopes (values)

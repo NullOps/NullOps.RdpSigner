@@ -168,7 +168,7 @@ namespace NullOps.RdpSigner
 		/// </summary>
 		/// <param name="settings">The IEnumerable of settings to flatten</param>
 		/// <returns>The provided settings as a string in rdp file format</returns>
-		private static string FlattenSettings(IEnumerable<RdpSetting> settings)
+		private static string FlattenSettings(List<RdpSetting> settings)
 		{
 			StringBuilder builder = new StringBuilder();
 
@@ -186,7 +186,7 @@ namespace NullOps.RdpSigner
 		/// <param name="settings">The settings to generate the signature for</param>
 		/// <param name="signingCertificate">The certificate to use to sign it</param>
 		/// <returns>The rdp signature setting</returns>
-		private static RdpSetting BuildSignatureSetting(IEnumerable<RdpSetting> settings, X509Certificate2 signingCertificate)
+		private static RdpSetting BuildSignatureSetting(List<RdpSetting> settings, X509Certificate2 signingCertificate)
 		{
 			string textToSign = FlattenSettings(settings);
 
@@ -236,7 +236,7 @@ namespace NullOps.RdpSigner
 		/// </summary>
 		/// <param name="settings">The settings to scope for</param>
 		/// <returns>The sign scope setting containing all scopes</returns>
-		private static RdpSetting BuildSignScopeSetting(IEnumerable<RdpSetting> settings)
+		private static RdpSetting BuildSignScopeSetting(List<RdpSetting> settings)
 		{
 			StringBuilder scopeBuilder = new StringBuilder();
 
@@ -268,7 +268,7 @@ namespace NullOps.RdpSigner
 		/// This stops people from adding a full address after the signing is done
 		/// </summary>
 		/// <param name="settings">The collection of settings to check and add to</param>
-		private static void EnsureAlternateFullAddressExists(ICollection<RdpSetting> settings)
+		private static void EnsureAlternateFullAddressExists(List<RdpSetting> settings)
 		{
 			if (settings.Any(x => x.SettingName.Equals(RdpSettingHelper.AlternateFullAddressSettingName, StringComparison.OrdinalIgnoreCase)))
 			{
